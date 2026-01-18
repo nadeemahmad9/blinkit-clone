@@ -1,13 +1,16 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-import { connectDB } from "./config/db.js"; // Ensure this path is correct
-import Product from './models/Product.js'; // Ensure this path is correct
+import { connectDB } from "./config/db.js"; 
+import Product from './models/Product.js'; 
 
 dotenv.config();
 connectDB();
 
 const products = [
-  // --- DAIRY CATEGORY (Sub-categories: milk, bread, eggs) ---
+  // ================================================
+  // 1. DAIRY CATEGORY 
+  // (Matches Home Page Link: /category/dairy)
+  // ================================================
   {
     name: "Amul Taaza Homogenised Toned Milk",
     weight: "1 L",
@@ -15,7 +18,7 @@ const products = [
     originalPrice: 78,
     discount: 5,
     time: 8,
-    category: "dairy", // Matches Sidebar ID
+    category: "Dairy", // ✅ Matches Home Page Category
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/9a4088cc-db19-4add-b3ce-2edd4d09f4ae.png" 
   },
   {
@@ -25,7 +28,7 @@ const products = [
     originalPrice: 35,
     discount: 5,
     time: 8,
-    category: "milk",
+    category: "Dairy", 
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/628c97e0-5ed4-425d-a667-1d3bfa6f0bde.png"
   },
   {
@@ -35,7 +38,7 @@ const products = [
     originalPrice: 45,
     discount: 10,
     time: 12,
-    category: "bread", // Matches Sidebar ID
+    category: "Dairy", // Grouped under Dairy for now (or change to 'Bakery')
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/68f28239-56ac-451e-bb74-bc582a10b200.png"
   },
   {
@@ -45,11 +48,14 @@ const products = [
     originalPrice: 65,
     discount: 15,
     time: 15,
-    category: "eggs", // Matches Sidebar ID
+    category: "Dairy", 
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/036c632f-a45e-42a5-b60b-545bec401b36.png"
   },
 
-  // --- SNACKS CATEGORY (Sub-categories: chips, biscuits) ---
+  // ================================================
+  // 2. SNACKS CATEGORY 
+  // (Matches fetchProducts("Snacks") in Home.jsx)
+  // ================================================
   {
     name: "Lay's India's Magic Masala Chips",
     weight: "50 g",
@@ -57,7 +63,7 @@ const products = [
     originalPrice: 25,
     discount: 20,
     time: 12,
-    category: "snacks", // Matches Sidebar ID
+    category: "Snacks", // ✅ Matches Home Page Request
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/4b9969ad-b922-4816-ab13-41ce228ac8b9.png"
   },
   {
@@ -67,7 +73,7 @@ const products = [
     originalPrice: 20,
     discount: 0,
     time: 12,
-    category: "snacks",
+    category: "Snacks", 
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/871988d1-1b77-476f-8dec-922930ad2c4b.png"
   },
   {
@@ -77,11 +83,14 @@ const products = [
     originalPrice: 120,
     discount: 8,
     time: 15,
-    category: "biscuits",
+    category: "Snacks",
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/a54720d4-a6a1-4b61-90d4-d37920be1980.png"
   },
 
-  // --- BEVERAGES CATEGORY (Sub-categories: cold-drinks, juices) ---
+  // ================================================
+  // 3. BEVERAGES CATEGORY 
+  // (Matches Home Page Link: /category/beverages)
+  // ================================================
   {
     name: "Coca-Cola Soft Drink (750ml)",
     weight: "750 ml",
@@ -89,7 +98,7 @@ const products = [
     originalPrice: 45,
     discount: 0,
     time: 9,
-    category: "cold-drinks",
+    category: "Beverages", // ✅ Matches Home Page Category
     image: "https://www.jiomart.com/images/product/original/490001662/coca-cola-750-ml-product-images-o490001662-p490001662-0-202203151624.jpg?im=Resize=(1000,1000)"
   },
   {
@@ -99,7 +108,7 @@ const products = [
     originalPrice: 125,
     discount: 12,
     time: 10,
-    category: "juices",
+    category: "Beverages",
     image: "https://www.jiomart.com/images/product/original/490009696/real-fruit-power-mixed-fruit-juice-1-l-product-images-o490009696-p490009696-0-202203150538.jpg"
   }
 ];
@@ -108,11 +117,12 @@ const importData = async () => {
   try {
     // Clear existing data first to avoid duplicates
     await Product.deleteMany();
+    console.log("Old products removed.");
 
     // Insert new data
     await Product.insertMany(products);
-
     console.log("Data Imported Successfully!");
+
     process.exit();
   } catch (error) {
     console.error(`Error: ${error.message}`);
