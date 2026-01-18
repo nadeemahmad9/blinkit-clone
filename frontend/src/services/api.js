@@ -1,30 +1,19 @@
-// import axios from 'axios';
-
-// const api = axios.create({
-//   baseURL: '/api', // This uses the proxy we just set up
-// });
-
-// export const fetchProducts = async () => {
-//   const response = await api.get('/products');
-//   return response.data;
-// };
-
-// export default api;
-
-
 import axios from 'axios';
 
+// 1. Automatically switch URLs based on the environment
+const BASE_URL = import.meta.env.MODE === 'development'
+  ? '/api'  // In local dev, use the Vite proxy (http://localhost:5173 -> http://localhost:5000)
+  : 'https://blinkit-clone-backend-60rl.onrender.com/api'; // In production, point directly to Render
+
 const api = axios.create({
-  baseURL: '/api', 
+  baseURL: BASE_URL,
 });
 
-// Update the function to accept a 'category' argument
 export const fetchProducts = async (category) => {
   try {
     const response = await api.get('/products', {
-      // Axios automatically adds ?category=Value to the URL
       params: {
-        category: category || undefined, // If category is empty, it fetches all
+        category: category || undefined,
       },
     });
     return response.data;
