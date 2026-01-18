@@ -15,7 +15,7 @@ const products = [
     originalPrice: 78,
     discount: 5,
     time: 8,
-    category: "milk", // Matches Sidebar ID
+    category: "dairy", // Matches Sidebar ID
     image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/9a4088cc-db19-4add-b3ce-2edd4d09f4ae.png" 
   },
   {
