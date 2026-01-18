@@ -1,0 +1,17 @@
+/* 1. Font import MUST be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* 2. Tailwind import comes second */
+@import "tailwindcss";
+
+/* 3. Your custom CSS comes last */
+@theme {
+  /* Define your Blinkit Brand Colors here */
+  --color-brand-yellow: #FFD344;
+  --color-brand-green: #0C831F;
+  --color-brand-dark: #1C1C1C;
+  --color-brand-gray: #F4F6FB;
+
+  /* Define your Font */
+  --font-sans: "Inter", sans-serif;
+}
