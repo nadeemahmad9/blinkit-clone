@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT
 
 app.use(cors({
-    origin: ["https://boltit.netlify.app/", "http://localhost:5173"], // Allow both Netlify and Localhost
+    origin: ["https://boltit.netlify.app", "http://localhost:5173"], // Allow both Netlify and Localhost
 }));
 
 
