@@ -27,7 +27,7 @@ const AllProductsPage = () => {
     }, []);
 
     return (
-        <div className="bg-[#F4F6FB] min-h-screen pb-safe font-sans">
+        <div className="bg-brand-gray min-h-screen pb-safe font-sans">
             {/* Sticky Header */}
             <div className="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3">
                 <button onClick={() => navigate(-1)} className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors">

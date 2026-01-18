@@ -113,7 +113,7 @@ const SearchPage = () => {
     }, [query]);
 
     return (
-        <div className="bg-[#F4F6FB] min-h-screen font-sans">
+        <div className="bg-brand-gray min-h-screen font-sans">
 
             {/* --- Header (Sticky & Centered Content) --- */}
             <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm">

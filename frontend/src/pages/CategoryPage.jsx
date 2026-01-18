@@ -237,7 +237,7 @@ const CategoryPage = () => {
 
     return (
         // CHANGE 1: Use h-screen and overflow-hidden to lock the main page
-        <div className="bg-[#F4F6FB] h-screen flex flex-col font-sans overflow-hidden">
+        <div className="bg-brand-gray h-screen flex flex-col font-sans overflow-hidden">
 
             {/* Header: Use flex-none so it doesn't shrink */}
             <div className="bg-white z-20 border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3 flex-none">
