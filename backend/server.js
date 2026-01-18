@@ -19,6 +19,12 @@ app.use("/api/auth", authRoutes)
 app.use("/api/orders",  orderRoutes)
 app.use("/api/users", userRoutes)
 
+app.use(cors({
+    origin: ["https://boltit.netlify.app", "http://localhost:5173"], // Allow both Netlify and Localhost
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+
 
 
 app.listen(port, ()=>{
