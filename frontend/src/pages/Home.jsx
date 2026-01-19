@@ -64,21 +64,18 @@ const Home = () => {
         <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
 
             {/* Hero Banner Area */}
+
             {/* Hero Banner Area */}
             <div className="p-4">
-                {/* 1. w-full: Full width of the container
-      2. h-auto: Height adjusts automatically to keep the image perfect (No cropping)
-      3. rounded-2xl: Gives it the "Card" shape
-  */}
-                <div className="w-full h-auto rounded-2xl overflow-hidden relative shadow-sm">
+                {/* Wrap everything in a Link to make it clickable */}
+                <Link to="/products" className="block w-full h-auto rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform hover:scale-[1.01] duration-200">
                     <img
                         src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
                         alt="Hero Banner"
-                        // w-full + h-auto ensures the image scales down like a responsive video
                         className="w-full h-auto object-contain block"
-                        loading="lazy" // <--- Adds performance boost
+                        loading="lazy"
                     />
-                </div>
+                </Link>
             </div>
 
             <PromoBanner />
