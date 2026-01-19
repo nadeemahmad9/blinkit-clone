@@ -1,6 +1,6 @@
 // import Product from "../models/Product.js";
 
-import Product from "../models/Product";
+import Product from "../models/Product.js";
 
 
 // // Fetch products (supports ?category=Dairy)
