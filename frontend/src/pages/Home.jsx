@@ -70,7 +70,7 @@ const Home = () => {
       2. h-auto: Height adjusts automatically to keep the image perfect (No cropping)
       3. rounded-2xl: Gives it the "Card" shape
   */}
-                <div className="w-full h-auto rounded-2xl overflow-hidden relative shadow-sm border border-gray-100">
+                <div className="w-full h-auto rounded-2xl overflow-hidden relative shadow-sm">
                     <img
                         src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
                         alt="Hero Banner"
