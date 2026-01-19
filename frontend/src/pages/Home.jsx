@@ -64,19 +64,25 @@ const Home = () => {
         <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
 
             {/* Hero Banner Area */}
-            <div className="p-1">
-                {/* <div className="bg-linear-to-r from-[#ecffec] to-[#f0f4ff] border border-green-100 h-45 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
-                    <div className="text-center z-10">
-                        <h2 className="text-2xl font-extrabold text-brand-dark">Superfast Delivery</h2>
-                        <p className="text-sm text-gray-500 mt-1">Order your daily needs</p>
-                        <button className="mt-3 bg-brand-dark text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-black transition-colors">
-                            Order Now
-                        </button>
-                    </div> */}
-                {/* Decorative Circle */}
-                {/* <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-yellow/20 rounded-full blur-2xl"></div>
-                </div> */}
-                <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg" alt="" />
+            {/* Hero Banner Area */}
+            <div className="p-4">
+                <div className="w-full rounded-2xl overflow-hidden relative shadow-sm group">
+
+                    {/* Responsive Aspect Ratio Logic:
+       1. aspect-square -> Forces 1:1 Height/Width on Mobile
+       2. md:aspect-[21/9] -> Switches to Wide Banner on Tablet/Desktop
+    */}
+                    <div className="aspect-square md:aspect-[21/9] w-full relative">
+                        <img
+                            src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
+                            alt="Hero Banner"
+                            // object-cover: Crops image to fill the square (Mobile)
+                            // md:object-fill: Shows full image without cropping (Desktop)
+                            className="w-full h-full object-cover md:object-fill transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </div>
+
+                </div>
             </div>
 
             <PromoBanner />
