@@ -461,6 +461,7 @@ import { ArrowLeft, Search, Loader } from "lucide-react";
 import { CATEGORY_DATA } from "../data/mockData";
 // ✅ Import the helper function instead of using axios directly
 import { fetchProducts } from "../services/api";
+import ProductCard from "../features/products/ProductCard";
 
 const CategoryPage = () => {
     const { slug } = useParams();
