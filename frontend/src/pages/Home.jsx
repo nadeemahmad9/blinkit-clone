@@ -65,17 +65,18 @@ const Home = () => {
 
             {/* Hero Banner Area */}
             <div className="p-4">
-                <div className="bg-linear-to-r from-[#ecffec] to-[#f0f4ff] border border-green-100 h-45 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
+                {/* <div className="bg-linear-to-r from-[#ecffec] to-[#f0f4ff] border border-green-100 h-45 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
                     <div className="text-center z-10">
                         <h2 className="text-2xl font-extrabold text-brand-dark">Superfast Delivery</h2>
                         <p className="text-sm text-gray-500 mt-1">Order your daily needs</p>
                         <button className="mt-3 bg-brand-dark text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-black transition-colors">
                             Order Now
                         </button>
-                    </div>
-                    {/* Decorative Circle */}
-                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-yellow/20 rounded-full blur-2xl"></div>
-                </div>
+                    </div> */}
+                {/* Decorative Circle */}
+                {/* <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-yellow/20 rounded-full blur-2xl"></div>
+                </div> */}
+                <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg" alt="" />
             </div>
 
             <PromoBanner />
