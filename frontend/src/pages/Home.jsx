@@ -64,7 +64,7 @@ const Home = () => {
         <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
 
             {/* Hero Banner Area */}
-            <div className="p-4">
+            <div className="px-4 mb-6">
                 {/* <div className="bg-linear-to-r from-[#ecffec] to-[#f0f4ff] border border-green-100 h-45 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
                     <div className="text-center z-10">
                         <h2 className="text-2xl font-extrabold text-brand-dark">Superfast Delivery</h2>
