@@ -66,22 +66,17 @@ const Home = () => {
             {/* Hero Banner Area */}
             {/* Hero Banner Area */}
             <div className="p-4">
-                <div className="w-full rounded-2xl overflow-hidden relative shadow-sm group">
-
-                    {/* Responsive Aspect Ratio Logic:
-       1. aspect-square -> Forces 1:1 Height/Width on Mobile
-       2. md:aspect-[21/9] -> Switches to Wide Banner on Tablet/Desktop
-    */}
-                    <div className="aspect-square md:aspect-[21/9] w-full relative">
-                        <img
-                            src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
-                            alt="Hero Banner"
-                            // object-cover: Crops image to fill the square (Mobile)
-                            // md:object-fill: Shows full image without cropping (Desktop)
-                            className="w-full h-full object-cover md:object-fill transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </div>
-
+                {/* 1. w-full: Full width of the container
+      2. h-auto: Height adjusts automatically to keep the image perfect (No cropping)
+      3. rounded-2xl: Gives it the "Card" shape
+  */}
+                <div className="w-full h-auto rounded-2xl overflow-hidden relative shadow-sm border border-gray-100">
+                    <img
+                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
+                        alt="Hero Banner"
+                        // w-full + h-auto ensures the image scales down like a responsive video
+                        className="w-full h-auto object-contain block"
+                    />
                 </div>
             </div>
 
