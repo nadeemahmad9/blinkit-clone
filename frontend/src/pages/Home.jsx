@@ -6,6 +6,7 @@ import ProductCard from "../features/products/ProductCard";
 import { fetchProducts } from "../services/api";
 import { Loader } from "lucide-react";
 import { Link } from "react-router-dom";
+import PromoBanner from "../features/home/PromoBanner";
 
 const CATEGORIES = [
     { id: 1, name: "Dairy", image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=225/layout-engine/2022-11/Slice-2_10.png" },
@@ -76,6 +77,8 @@ const Home = () => {
                     <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-yellow/20 rounded-full blur-2xl"></div>
                 </div>
             </div>
+
+            <PromoBanner />
 
             {/* Category Section */}
             <div className="px-4 mb-8 mt-4">
