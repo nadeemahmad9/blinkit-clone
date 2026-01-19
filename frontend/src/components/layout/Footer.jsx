@@ -47,7 +47,7 @@ const Footer = () => {
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-4 mb-4">
                             <h3 className="font-bold text-black">Categories</h3>
-                            <a href="#" className="text-green-600 text-sm font-medium hover:text-green-700">see all</a>
+                            <a href="/products" className="text-green-600 text-sm font-medium hover:text-green-700">see all</a>
                         </div>
                         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-gray-500">
                             <li><a href="#" className="hover:text-black">Vegetables & Fruits</a></li>
@@ -89,7 +89,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="w-full md:w-auto text-center md:text-left">
-                    © Blink Commerce Private Limited, 2016-2026
+                    © Boltit Commerce Private Limited, 2016-2026
                 </div>
 
                 {/* Download App */}
@@ -119,7 +119,6 @@ const Footer = () => {
                     <SocialIcon>
                         {/* 1. Background Circle */}
                         <rect width="100" height="100" rx="50" fill="#1F1F1F"></rect>
-
                         <path
                             d="M61.44 26H70.78L50.48 49.33L74.34 81H55.63L41.01 61.76L24.23 81H14.88L36.56 56.1L13.88 26H33.19L46.42 43.52L61.44 26ZM58.17 75.38H63.34L30.13 31.28H24.58L58.17 75.38Z"
                             fill="white"
@@ -140,9 +139,9 @@ const Footer = () => {
             </div>
 
             {/* --- Disclaimer Text --- */}
-            <div className="max-w-[1280px] px-4 md:px-8 mt-6 text-xs text-gray-400 leading-relaxed">
-                “Blinkit” is owned & managed by "Blink Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.
-            </div>
+            {/* <div className="max-w-[1280px] px-4 md:px-8 mt-6 text-xs text-gray-400 leading-relaxed">
+                “Boltit” is owned & managed by "Boltit Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.
+            </div> */}
 
         </div>
     );
