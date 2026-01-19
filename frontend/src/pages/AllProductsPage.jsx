@@ -14,10 +14,20 @@ const AllProductsPage = () => {
         const fetchAllProducts = async () => {
             setLoading(true);
             try {
-                const { data } = await axios.get("/api/products");
-                setProducts(data);
+                // ✅ FIX 1: Use the Full Backend URL (Render)
+                const BASE_URL = "https://blinkit-clone-backend-60rl.onrender.com";
+                const { data } = await axios.get(`${BASE_URL}/api/products`);
+
+                // ✅ FIX 2: Safety Check - Only set products if it's an Array
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                } else {
+                    console.error("API returned invalid data:", data);
+                    setProducts([]); // Fallback to empty list
+                }
             } catch (error) {
                 console.error("Error loading products:", error);
+                setProducts([]);
             } finally {
                 setLoading(false);
             }
@@ -27,7 +37,7 @@ const AllProductsPage = () => {
     }, []);
 
     return (
-        <div className="bg-brand-gray min-h-screen pb-safe font-sans">
+        <div className="bg-[#f4f6fb] min-h-screen pb-safe font-sans">
             {/* Sticky Header */}
             <div className="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3">
                 <button onClick={() => navigate(-1)} className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors">
@@ -46,25 +56,19 @@ const AllProductsPage = () => {
                         {[...Array(12)].map((_, i) => <ProductSkeleton key={i} />)}
                     </div>
                 ) : (
-                    /* RESPONSIVE GRID LOGIC (Granular Control):
-                       - grid-cols-2: Default Mobile (< 450px)
-                       - min-[450px]:grid-cols-3: Large Phones / Small Tablets (e.g. iPhone Pro Max)
-                       - md:grid-cols-4: Tablets (iPad Portrait)
-                       - lg:grid-cols-5: Small Laptops / iPad Landscape
-                       - xl:grid-cols-6: Desktop Monitors
-                       - 2xl:grid-cols-7: Large/Ultrawide Screens
-                       
-                       - gap-2: Tighter gap on mobile to fit content
-                       - sm:gap-4: More breathing room on larger screens
-                       - justify-items-center: Keeps fixed-width cards centered in their grid cells
-                    */
                     <div className="grid grid-cols-2 min-[450px]:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2 sm:gap-4 justify-items-center">
-                        {products.map((prod) => (
-                            // Wrapper div ensures card respects grid centering
-                            <div key={prod._id} className="w-full flex justify-center">
-                                <ProductCard product={prod} />
+                        {/* ✅ FIX 3: Add explicit check before mapping */}
+                        {Array.isArray(products) && products.length > 0 ? (
+                            products.map((prod) => (
+                                <div key={prod._id} className="w-full flex justify-center">
+                                    <ProductCard product={prod} />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full text-center py-10 text-gray-400">
+                                No products found.
                             </div>
-                        ))}
+                        )}
                     </div>
                 )}
             </div>

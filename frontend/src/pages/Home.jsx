@@ -76,6 +76,7 @@ const Home = () => {
                         alt="Hero Banner"
                         // w-full + h-auto ensures the image scales down like a responsive video
                         className="w-full h-auto object-contain block"
+                        loading="lazy" // <--- Adds performance boost
                     />
                 </div>
             </div>
