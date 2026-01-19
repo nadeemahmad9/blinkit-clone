@@ -9,6 +9,7 @@ name: { type: String, required: true },
     weight: { type: String, required: true },
     time: { type: Number, required: true }, // Delivery time in mins
     category: { type: String, required: true },
+    subCategory: { type: String},
 
     },
   {
