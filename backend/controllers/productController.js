@@ -1,5 +1,7 @@
 // import Product from "../models/Product.js";
 
+import Product from "../models/Product";
+
 
 // // Fetch products (supports ?category=Dairy)
 // //  GET /api/products
