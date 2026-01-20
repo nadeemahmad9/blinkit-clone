@@ -540,13 +540,13 @@ const CategoryPage = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className="flex-1 bg-[#F4F6FB] h-full overflow-y-auto p-3 pb-24">
+                <div className="flex-1 bg-[#F4F6FB] h-20 overflow-y-auto p-3 pb-24">
                     {/* ... (Keep your product grid logic) ... */}
                     {loading ? (
-                        <div className="flex justify-center h-30 items-center"><Loader className="animate-spin" /></div>
+                        <div className="flex justify-center h-40 items-center"><Loader className="animate-spin" /></div>
                     ) : (
                         // Using your ProductCard component here
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                             {products.map(p => <ProductCard key={p._id} product={p} />)}
                         </div>
                     )}
