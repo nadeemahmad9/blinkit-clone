@@ -901,15 +901,19 @@ const Header = () => {
                     </div>
 
                     {/* Location Bar */}
-                    <div
-                        onClick={() => setIsAddressOpen(true)}
-                        className="flex items-start gap-2 w-fit lg:w-auto max-w-full lg:max-w-[200px] cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors"
-                    >
+                    {/* Location Bar */}
+                    <div className="flex items-start gap-2 w-fit lg:w-auto max-w-full lg:max-w-[200px] p-2 rounded-md">
                         <div className="flex flex-col w-fit">
-                            <h3 className="font-extrabold text-[16px] lg:text-[18px] leading-tight text-gray-900 font-sans">
+                            {/* 1. "Delivery in 8 minutes" - NOT CLICKABLE */}
+                            <h3 className="font-extrabold text-[16px] lg:text-[18px] leading-tight text-gray-900 font-sans cursor-default">
                                 Delivery in 8 minutes
                             </h3>
-                            <div className="flex items-center gap-1 text-[13px] text-gray-600 w-full">
+
+                            {/* 2. Address Text - CLICKABLE */}
+                            <div
+                                onClick={() => setIsAddressOpen(true)}
+                                className="flex items-center gap-1 text-[13px] text-gray-600 w-full cursor-pointer hover:text-gray-900 transition-colors mt-0.5"
+                            >
                                 <span className="font-bold text-gray-800 whitespace-nowrap">
                                     {selectedAddress ? selectedAddress.type : "City"}
                                 </span>
