@@ -221,7 +221,7 @@ const products = [
     time: 12,
     category: "Dairy",
     subCategory: "bread",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/786a4220-4352-4749-9b98-5c4d293d052d.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/9b3e11ab-9a5d-463d-b098-379a04ce5b7e.png"
   },
   {
     name: "English Oven Brown Bread",
@@ -232,18 +232,18 @@ const products = [
     time: 12,
     category: "Dairy",
     subCategory: "bread",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e5926514-4148-4221-8664-897452d92131.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/0b267148-c2c6-4eae-9ecd-1e9a83569e3a.png"
   },
   {
-    name: "Farm Made Brown Eggs",
+    name: "Farm Made Free Range Eggs",
     weight: "6 pcs",
-    price: 75,
-    originalPrice: 90,
-    discount: 16,
+    price: 141,
+    originalPrice: 160,
+    discount: 11,
     time: 15,
     category: "Dairy",
     subCategory: "eggs",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3d4493d5-072a-4318-87e0-41315907406a.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/388e48ce-a97f-4fd4-82e3-3f6b7189afd9.png"
   },
 
   // ================================================
@@ -284,69 +284,69 @@ const products = [
   },
   {
     name: "Doritos Nacho Cheese Chips",
-    weight: "44 g",
-    price: 20,
-    originalPrice: 20,
-    discount: 0,
-    time: 10,
+    weight: "75 g",
+    price: 44,
+    originalPrice: 48,
+    discount: 8,
+    time: 8,
     category: "Snacks",
     subCategory: "chips",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/2e2d93e2-8947-4180-8772-563d76e33887.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=540/da/cms-assets/cms/product/729792bc-f395-4569-ab7d-42829daf5f94.png"
   },
   {
     name: "Bingo! Mad Angles Achaari Masti",
-    weight: "66 g",
+    weight: "60 g",
     price: 20,
     originalPrice: 20,
     discount: 0,
     time: 10,
     category: "Snacks",
     subCategory: "chips",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/674d852a-0630-4e5a-8b01-5743b276701a.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/f96db4a8-7282-4d20-a01e-259cc479f555.png"
   },
   {
     name: "Pringles Original Potato Chips",
-    weight: "134 g",
-    price: 115,
-    originalPrice: 150,
-    discount: 23,
+    weight: "141 g",
+    price: 126,
+    originalPrice: 169,
+    discount: 25,
     time: 15,
     category: "Snacks",
     subCategory: "chips",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/541249e9-0158-45e0-94a4-573517878440.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/ff2b0c91-725f-407d-b545-25cfce225899.png"
   },
   {
     name: "Britannia Good Day Cashew Cookies",
     weight: "200 g",
-    price: 45,
-    originalPrice: 50,
-    discount: 10,
+    price: 40,
+    originalPrice: 40,
+    discount: 0,
     time: 14,
     category: "Snacks",
     subCategory: "biscuits",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/20b08051-9e73-4560-8f9f-689e3a6230f2.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/32f9e932-d9ca-4429-8496-ed74420acd08.png"
   },
   {
     name: "Oreo Vanilla Creme Biscuits",
-    weight: "120 g",
-    price: 35,
-    originalPrice: 35,
-    discount: 0,
-    time: 12,
+    weight: "125.25 g",
+    price: 38,
+    originalPrice: 40,
+    discount: 5,
+    time: 8,
     category: "Snacks",
     subCategory: "biscuits",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/88d8d32b-3121-4f1e-9a6d-e4483788a83d.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/011e0390-0968-468c-ad19-6cfbfefb0e2a.png"
   },
   {
     name: "Sunfeast Dark Fantasy Choco Fills",
-    weight: "75 g",
-    price: 40,
-    originalPrice: 45,
-    discount: 11,
+    weight: "69 g",
+    price: 33,
+    originalPrice: 35,
+    discount: 5,
     time: 12,
     category: "Snacks",
     subCategory: "biscuits",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0f799797-25d2-4541-b203-9e4695e87019.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/91b5f248-e9f0-4b45-b5e6-1caff4fb8d67.png"
   },
 
   // ================================================
@@ -361,7 +361,7 @@ const products = [
     time: 9,
     category: "Beverages",   // ✅ For Home Page
     subCategory: "cold-drinks", // ✅ For Sidebar ID "cold-drinks"
-    image: "https://www.jiomart.com/images/product/original/490001662/coca-cola-750-ml-product-images-o490001662-p490001662-0-202203151624.jpg?im=Resize=(1000,1000)"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/d84c51e5-6227-4868-8b2d-f708f1be67fc.png"
   },
   {
     name: "Real Fruit Power Mixed Fruit Juice",
@@ -372,7 +372,7 @@ const products = [
     time: 10,
     category: "Beverages",
     subCategory: "juices",   // ✅ For Sidebar ID "juices"
-    image: "https://www.jiomart.com/images/product/original/490009696/real-fruit-power-mixed-fruit-juice-1-l-product-images-o490009696-p490009696-0-202203150538.jpg"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/ff4a3ece-1ddf-4860-b293-c2c22c768bb6.png"
   },
   {
     name: "Thums Up Soft Drink",
@@ -383,7 +383,7 @@ const products = [
     time: 9,
     category: "Beverages",
     subCategory: "cold-drinks",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/24f11370-9884-4866-8d19-455bc328dce5.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/78afb4b9-c043-4640-ad07-1a38b503eb83.png"
   },
   {
     name: "Sprite Lime Flavored Soft Drink",
@@ -394,18 +394,18 @@ const products = [
     time: 9,
     category: "Beverages",
     subCategory: "cold-drinks",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/574e4c34-8c88-4665-bbf0-67c4620be670.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/f9dac42c-72c9-47a4-8777-e4d3c9c7522a.png"
   },
   {
     name: "Maaza Mango Drink",
-    weight: "1.2 L",
-    price: 75,
-    originalPrice: 80,
-    discount: 6,
-    time: 10,
+    weight: "600 ml",
+    price: 35,
+    originalPrice: 35,
+    discount: 0,
+    time: 8,
     category: "Beverages",
     subCategory: "juices",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/18158097-7592-4217-9102-861cb7d50731.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/bd4d64b7-7c43-449a-ac11-4a3ddfad644d.png"
   },
   {
     name: "Tropicana 100% Orange Juice",
@@ -416,7 +416,7 @@ const products = [
     time: 15,
     category: "Beverages",
     subCategory: "juices",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/29a0076a-3606-4449-971c-e945c57176df.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/b329dcb8-edd2-406a-9575-40ef17b663ac.png"
   },
   {
     name: "Red Bull Energy Drink",
@@ -427,7 +427,7 @@ const products = [
     time: 5,
     category: "Beverages",
     subCategory: "cold-drinks",
-    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8816c204-0678-430c-901d-d2495d4653d9.png"
+    image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/6f4bd423-1666-4d23-bf3d-db482be09608.png"
   }
 ];
 
