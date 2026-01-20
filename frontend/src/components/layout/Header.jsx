@@ -905,7 +905,7 @@ const Header = () => {
                         onClick={() => setIsAddressOpen(true)}
                         className="flex items-start gap-2 w-full lg:w-auto max-w-full lg:max-w-[200px] cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors"
                     >
-                        <div className="flex flex-col w-full">
+                        <div className="flex flex-col w-fit">
                             <h3 className="font-extrabold text-[16px] lg:text-[18px] leading-tight text-gray-900 font-sans">
                                 Delivery in 8 minutes
                             </h3>
