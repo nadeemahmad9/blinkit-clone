@@ -31,17 +31,17 @@ export const CATEGORY_DATA = {
       { 
         id: "bread", // ✅ Matches Backend Category
         name: "Bread & Pav", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/953_1643384422020.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/953_1657599742631.png" 
       },
       { 
         id: "eggs",  // ✅ Matches Backend Category
         name: "Eggs", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/1238_1643384352932.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/1200_1657599895699.png" 
       },
       { 
         id: "flakes", 
         name: "Flakes & Kids", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/123_1643384405523.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/954_1680251634382.png" 
       },
     ]
   },
@@ -54,17 +54,17 @@ export const CATEGORY_DATA = {
       { 
         id: "chips", // ✅ Matches Backend Category
         name: "Chips & Crisps", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/1023_1643383800685.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/940_1643445382163.png" 
       },
       { 
         id: "biscuits", // ✅ Matches Backend Category
         name: "Biscuits & Cookies", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/1097_1643383824559.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/28_1643445056245.png" 
       },
       { 
         id: "namkeen", 
         name: "Namkeen", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/1040_1643383863773.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/1178_1643445391732.png" 
       }
     ]
   },
@@ -77,12 +77,12 @@ export const CATEGORY_DATA = {
       { 
         id: "cold-drinks", 
         name: "Soft Drinks", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/359_1643384033956.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/1102_1649432926740.png" 
       },
       { 
         id: "juices", 
         name: "Fruit Juices", 
-        icon: "https://cdn.grofers.com/app/images/category/cms_images/icon/1144_1643384055107.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/955_1643385414974.png" 
       }
     ]
   }
