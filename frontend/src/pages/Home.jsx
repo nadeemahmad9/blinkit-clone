@@ -68,7 +68,7 @@ const Home = () => {
             {/* Hero Banner Area */}
             <div className="p-4">
                 {/* Wrap everything in a Link to make it clickable */}
-                <Link to="/products" className="w-[1265px] h-[400px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform hover:scale-[1.01] duration-200">
+                <Link to="/products" className="w-[1265px] h-[269px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform hover:scale-[1.01] duration-200">
                     <img
                         src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
                         alt="Hero Banner"
