@@ -28,13 +28,13 @@ function App() {
 
         <Route path="/search" element={<SearchPage />} />
         <Route path='/products' element={<AllProductsPage />} />
+        <Route path='/product/:id' element={<ProductDetails />} />
       </Routes>
 
       {/* Global Drawers */}
       <CartDrawer />
       <LoginDrawer />
       <ProfileDrawer />
-      <ProductDetails />
 
       <Footer />
 
