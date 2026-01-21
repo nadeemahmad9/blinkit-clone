@@ -266,7 +266,7 @@ const ProductDetails = () => {
                                     </div>
                                     <div className="border-b border-gray-50 pb-3">
                                         <p className="text-xs font-semibold text-gray-500 mb-1">Manufacturer Details</p>
-                                        <p className="text-sm text-gray-800">Blinkit Commerce Private Limited</p>
+                                        <p className="text-sm text-gray-800">Boltit Commerce Private Limited</p>
                                     </div>
                                     <div className="border-b border-gray-50 pb-3">
                                         <p className="text-xs font-semibold text-gray-500 mb-1">Disclaimer</p>
