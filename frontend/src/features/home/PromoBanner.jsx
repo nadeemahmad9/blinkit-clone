@@ -33,7 +33,7 @@ const PromoBanner = () => {
                         key={banner.id}
                         // Dimensions from your HTML: width ~335px, height 195px
                         // flex-shrink-0: Prevents the image from shrinking in the flex row
-                        className="min-w-[335px] h-[195px] flex-shrink-0 cursor-pointer transition-transform hover:scale-[1.02] duration-200"
+                        className="min-w-[335px] h-[195px] flex-shrink-0 cursor-pointer transition-transform duration-200"
                     >
                         <img
                             src={banner.image}
