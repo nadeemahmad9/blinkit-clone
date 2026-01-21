@@ -143,7 +143,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronDown, ArrowLeft, Clock, ShieldCheck, ShoppingBag } from "lucide-react";
 import api from "../services/api"; // Your API helper
-import useCartStore from "../store/useCartStore";
+import { useCartStore } from "../store/useCartStore";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -322,8 +322,8 @@ const ProductDetails = () => {
                                 <div
                                     key={variant.id}
                                     className={`relative flex-shrink-0 w-[100px] p-2 rounded-xl border text-left transition-all ${selectedVariant.id === variant.id
-                                            ? 'border-green-600 bg-[#f7fffa] ring-1 ring-green-600'
-                                            : 'border-gray-200 bg-white'
+                                        ? 'border-green-600 bg-[#f7fffa] ring-1 ring-green-600'
+                                        : 'border-gray-200 bg-white'
                                         }`}
                                 >
                                     {variant.off && (
