@@ -165,6 +165,36 @@ const Home = () => {
                 )}
             </div>
 
+            {/* Cold Drinks & Juices */}
+
+            <div className="px-4 mb-8">
+                <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-lg font-extrabold text-brand-dark">Cold Drinks & Juices</h2>
+                    <Link to="/category/dairy" className="text-xs font-bold text-brand-green hover:text-green-700">
+                        See all
+                    </Link>
+                </div>
+
+                {loading ? (
+                    <div className="flex justify-center items-center h-40">
+                        <Loader className="animate-spin text-brand-green" size={32} />
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        {/* Map the Snacks State */}
+                        {snackProducts.length > 0 ? (
+                            snackProducts.slice(0, 6).map((prod) => (
+                                <ProductCard key={prod._id} product={prod} />
+                            ))
+                        ) : (
+                            <p className="text-sm text-gray-400 col-span-full text-center py-4">
+                                No snacks found.
+                            </p>
+                        )}
+                    </div>
+                )}
+            </div>
+
             {/* <BottomNav /> */}
         </div>
     );
