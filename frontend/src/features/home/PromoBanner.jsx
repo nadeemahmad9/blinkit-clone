@@ -20,7 +20,7 @@ const PROMO_BANNERS = [
 
 const PromoBanner = () => {
     return (
-        <div className="px-6 mb-6">
+        <div className="px-7 mb-6">
             {/* Container: 
         - flex: Aligns items in a row
         - overflow-x-auto: Enables horizontal scrolling
