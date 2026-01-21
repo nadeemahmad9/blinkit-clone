@@ -238,6 +238,7 @@ const ProductCard = ({ product }) => {
 
     // 3. Navigation Helper
     const openDetails = () => {
+        console.log("Card Clicked!", product);
         navigate(`/product/${product._id}`);
     };
 
