@@ -219,7 +219,7 @@ const CartDrawer = () => {
                             ) : (
                                 <div className="bg-white rounded-xl p-3 shadow-sm">
                                     {cartItems.map((item) => (
-                                        <div key={item.id} className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0">
+                                        <div key={item._id} className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0">
                                             <div className="flex gap-3 items-center">
                                                 <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center p-1">
                                                     <img src={item.image} alt="" className="w-full h-full object-contain mix-blend-multiply" />
@@ -233,7 +233,7 @@ const CartDrawer = () => {
 
                                             {/* Counter */}
                                             <div className="flex items-center bg-brand-green text-white rounded-lg px-2 py-1 h-8">
-                                                <button onClick={() => removeFromCart(item.id)}><Minus size={14} /></button>
+                                                <button onClick={() => removeFromCart(item._id)}><Minus size={14} /></button>
                                                 <span className="text-xs font-bold mx-2 min-w-[10px] text-center">{item.quantity}</span>
                                                 <button onClick={() => addToCart(item)}><Plus size={14} /></button>
                                             </div>
