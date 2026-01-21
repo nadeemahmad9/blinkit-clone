@@ -55,3 +55,20 @@ export const getProducts = async (req, res) => {
     res.status(500).json([]);
   }
 };
+
+  // @desc    Fetch single product
+// @route   GET /api/products/:id
+
+export const getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
