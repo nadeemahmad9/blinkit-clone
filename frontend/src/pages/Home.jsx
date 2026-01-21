@@ -185,7 +185,7 @@ const Home = () => {
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                         {/* Map the Snacks State */}
                         {BeveragesProducts.length > 0 ? (
-                            snackProducts.slice(0, 6).map((prod) => (
+                            BeveragesProducts.slice(0, 6).map((prod) => (
                                 <ProductCard key={prod._id} product={prod} />
                             ))
                         ) : (
