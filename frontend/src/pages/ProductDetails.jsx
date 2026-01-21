@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, ShieldCheck, Star } from "lucide-react";
 import api from "../services/api";
-import useCartStore from "../store/useCartStore";
+import { useCartStore } from "../store/useCartStore";
 
 const ProductDetails = () => {
     const { id } = useParams();

@@ -376,7 +376,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom"; // 1. Import Link
-import useCartStore from "../../store/useCartStore";
+import { useCartStore } from "../../store/useCartStore";
 
 const ProductCard = ({ product }) => {
     const { cartItems, addToCart, removeFromCart } = useCartStore();
