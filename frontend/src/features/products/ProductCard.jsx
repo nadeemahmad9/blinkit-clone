@@ -393,7 +393,7 @@ const ProductCard = ({ product }) => {
             {/* z-10 ensures it catches clicks, but sits below buttons      */}
             {/* ============================================================== */}
             <Link
-                to={`/product/${product._id}`}
+                to={`/products/${product._id}`}
                 className="absolute inset-0 z-10"
             />
 
