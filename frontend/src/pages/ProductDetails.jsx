@@ -19,7 +19,9 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const { data } = await api.get(`/api/products/${id}`);
+                // 2. Use 'api.get' instead of 'axios.get'
+                // The baseURL is already handled in api.js, so just pass the endpoint
+                const { data } = await api.get(`/products/${id}`);
                 setProduct(data);
             } catch (error) {
                 console.error("Error fetching product:", error);
@@ -27,7 +29,10 @@ const ProductDetails = () => {
                 setLoading(false);
             }
         };
-        fetchProduct();
+
+        if (id) {
+            fetchProduct();
+        }
     }, [id]);
 
     if (loading) return <div className="min-h-screen flex justify-center items-center"><div className="animate-spin w-8 h-8 border-2 border-brand-green rounded-full border-t-transparent"></div></div>;
