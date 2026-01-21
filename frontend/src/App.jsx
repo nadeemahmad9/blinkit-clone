@@ -28,7 +28,7 @@ function App() {
 
         <Route path="/search" element={<SearchPage />} />
         <Route path='/products' element={<AllProductsPage />} />
-        <Route path='/product/:id' element={<ProductDetails />} />
+        <Route path='/products/:id' element={<ProductDetails />} />
       </Routes>
 
       {/* Global Drawers */}
