@@ -148,81 +148,186 @@
 // }));
 
 
+// import { create } from 'zustand';
+// // ❌ DELETE: import axios from 'axios';
+// // ✅ ADD: Import your API helper
+// import api from '../services/api';
+
+// export const useCartStore = create((set, get) => ({
+//     cartItems: [],
+//     isCartOpen: false,
+
+//     openCart: () => set({ isCartOpen: true }),
+//     closeCart: () => set({ isCartOpen: false }),
+
+//     // ✅ Added clearCart helper (used by CartDrawer)
+//     clearCart: () => set({ cartItems: [] }),
+
+//     addToCart: (product) => {
+//         const items = get().cartItems;
+//         const existingItem = items.find((item) => item._id === product._id);
+//         if (existingItem) {
+//             set({ cartItems: items.map((item) => item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item) });
+//         } else {
+//             set({ cartItems: [...items, { ...product, quantity: 1 }] });
+//         }
+//     },
+
+//     removeFromCart: (product_id) => {
+//         const items = get().cartItems;
+//         const existingItem = items.find((item) => item._id === product_id);
+//         if (!existingItem) return;
+//         if (existingItem.quantity > 1) {
+//             set({ cartItems: items.map((item) => item._id === product_id ? { ...item, quantity: item.quantity - 1 } : item) });
+//         } else {
+//             const newItems = items.filter((item) => item._id !== product_id);
+//             set({ cartItems: newItems });
+//             if (newItems.length === 0) set({ isCartOpen: false });
+//         }
+//     },
+
+//     getCartTotal: () => {
+//         return get().cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+//     },
+
+//     // ✅ FIXED PLACE ORDER FUNCTION
+//     placeOrder: async (userId) => {
+//         const { cartItems, getCartTotal } = get();
+//         const totalPrice = getCartTotal();
+
+//         try {
+//             // Map items for backend
+//             const orderItems = cartItems.map(item => ({
+//                 product: item._id, // Ensure this matches your Product Schema ID
+//                 name: item.name,
+//                 image: item.image,
+//                 price: item.price,
+//                 qty: item.quantity
+//             }));
+
+//             // ✅ FIX: Use 'api.post' (Uses Render URL automatically)
+//             // Note: We remove '/api' because api.js base URL includes it
+//             const { data } = await api.post('/orders', {
+//                 userId,
+//                 orderItems,
+//                 totalPrice
+//             });
+
+//             // Success: Return consistent object
+//             return { success: true, order: data };
+
+//         } catch (error) {
+//             console.error("Place Order Error:", error);
+//             // Return failure object
+//             return {
+//                 success: false,
+//                 message: error.response?.data?.message || "Order Failed"
+//             };
+//         }
+//     },
+// }));
+
+
+
 import { create } from 'zustand';
-// ❌ DELETE: import axios from 'axios';
-// ✅ ADD: Import your API helper
+import { persist, createJSONStorage } from 'zustand/middleware'; // 1. Import Persist
 import api from '../services/api';
 
-export const useCartStore = create((set, get) => ({
-    cartItems: [],
-    isCartOpen: false,
+// 2. Wrap the store function in persist()
+export const useCartStore = create(
+    persist(
+        (set, get) => ({
+            cartItems: [],
+            isCartOpen: false,
 
-    openCart: () => set({ isCartOpen: true }),
-    closeCart: () => set({ isCartOpen: false }),
+            openCart: () => set({ isCartOpen: true }),
+            closeCart: () => set({ isCartOpen: false }),
+            clearCart: () => set({ cartItems: [] }),
 
-    // ✅ Added clearCart helper (used by CartDrawer)
-    clearCart: () => set({ cartItems: [] }),
+            addToCart: (product) => {
+                const { cartItems } = get();
+                // Ensure consistent ID usage (_id)
+                const existingItem = cartItems.find((item) => item._id === product._id);
 
-    addToCart: (product) => {
-        const items = get().cartItems;
-        const existingItem = items.find((item) => item._id === product._id);
-        if (existingItem) {
-            set({ cartItems: items.map((item) => item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item) });
-        } else {
-            set({ cartItems: [...items, { ...product, quantity: 1 }] });
+                if (existingItem) {
+                    set({
+                        cartItems: cartItems.map((item) =>
+                            item._id === product._id
+                                ? { ...item, quantity: item.quantity + 1 }
+                                : item
+                        ),
+                    });
+                } else {
+                    set({ cartItems: [...cartItems, { ...product, quantity: 1 }] });
+                }
+            },
+
+            removeFromCart: (product_id) => {
+                const { cartItems } = get();
+                const existingItem = cartItems.find((item) => item._id === product_id);
+
+                if (!existingItem) return;
+
+                if (existingItem.quantity > 1) {
+                    set({
+                        cartItems: cartItems.map((item) =>
+                            item._id === product_id
+                                ? { ...item, quantity: item.quantity - 1 }
+                                : item
+                        ),
+                    });
+                } else {
+                    const newItems = cartItems.filter((item) => item._id !== product_id);
+                    set({ cartItems: newItems });
+                    // Optional: Close cart if empty
+                    if (newItems.length === 0) set({ isCartOpen: false });
+                }
+            },
+
+            getCartTotal: () => {
+                return get().cartItems.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                );
+            },
+
+            placeOrder: async (userId) => {
+                const { cartItems, getCartTotal } = get();
+                const totalPrice = getCartTotal();
+
+                try {
+                    const orderItems = cartItems.map((item) => ({
+                        product: item._id,
+                        name: item.name,
+                        image: item.image,
+                        price: item.price,
+                        qty: item.quantity,
+                    }));
+
+                    const { data } = await api.post('/orders', {
+                        userId,
+                        orderItems,
+                        totalPrice,
+                    });
+
+                    return { success: true, order: data };
+                } catch (error) {
+                    console.error('Place Order Error:', error);
+                    return {
+                        success: false,
+                        message: error.response?.data?.message || 'Order Failed',
+                    };
+                }
+            },
+        }),
+        {
+            // 3. Persist Configuration
+            name: 'boltit-cart-storage', // The key name in localStorage
+            storage: createJSONStorage(() => localStorage),
+            // Only save cartItems (don't save isCartOpen state)
+            partialize: (state) => ({ cartItems: state.cartItems }),
         }
-    },
+    )
+);
 
-    removeFromCart: (product_id) => {
-        const items = get().cartItems;
-        const existingItem = items.find((item) => item._id === product_id);
-        if (!existingItem) return;
-        if (existingItem.quantity > 1) {
-            set({ cartItems: items.map((item) => item._id === product_id ? { ...item, quantity: item.quantity - 1 } : item) });
-        } else {
-            const newItems = items.filter((item) => item._id !== product_id);
-            set({ cartItems: newItems });
-            if (newItems.length === 0) set({ isCartOpen: false });
-        }
-    },
-
-    getCartTotal: () => {
-        return get().cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    },
-
-    // ✅ FIXED PLACE ORDER FUNCTION
-    placeOrder: async (userId) => {
-        const { cartItems, getCartTotal } = get();
-        const totalPrice = getCartTotal();
-
-        try {
-            // Map items for backend
-            const orderItems = cartItems.map(item => ({
-                product: item._id, // Ensure this matches your Product Schema ID
-                name: item.name,
-                image: item.image,
-                price: item.price,
-                qty: item.quantity
-            }));
-
-            // ✅ FIX: Use 'api.post' (Uses Render URL automatically)
-            // Note: We remove '/api' because api.js base URL includes it
-            const { data } = await api.post('/orders', {
-                userId,
-                orderItems,
-                totalPrice
-            });
-
-            // Success: Return consistent object
-            return { success: true, order: data };
-
-        } catch (error) {
-            console.error("Place Order Error:", error);
-            // Return failure object
-            return {
-                success: false,
-                message: error.response?.data?.message || "Order Failed"
-            };
-        }
-    },
-}));
+export default useCartStore;
