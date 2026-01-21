@@ -44,14 +44,14 @@ const Home = () => {
                 // 2. Fetch data in parallel
                 // fetchProducts() -> Gets all/random products for "Recommended"
                 // fetchProducts("Snacks") -> Gets only products with category "Snacks"
-                const [recommendedData, snacksData, BeveragesProducts] = await Promise.all([
+                const [recommendedData, snacksData, BeveragesData] = await Promise.all([
                     fetchProducts(),
                     fetchProducts("Snacks")
                 ]);
 
                 setRecommendedProducts(recommendedData);
                 setSnackProducts(snacksData);
-                setBeveragesProducts(BeveragesProducts);
+                setBeveragesProducts(BeveragesData);
             } catch (error) {
                 console.error("Failed to fetch products", error);
             } finally {
