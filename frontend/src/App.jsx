@@ -13,6 +13,7 @@ import Header from './components/layout/Header'
 import SearchPage from './pages/SearchPage'
 import AllProductsPage from './pages/AllProductsPage'
 import Footer from './components/layout/Footer'
+import ProductDetails from './pages/ProductDetails'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <CartDrawer />
       <LoginDrawer />
       <ProfileDrawer />
+      <ProductDetails />
 
       <Footer />
 
