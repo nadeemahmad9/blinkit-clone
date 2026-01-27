@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, CreditCard, Banknote, Wallet, CheckCircle, Loader, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import useCartStore from "../store/useCartStore";
-import useAuthStore from "../store/useAuthStore";
-import useAddressStore from "../store/useAddressStore";
+import { useCartStore } from "../store/useCartStore";
+import { useAuthStore } from "../store/useAuthStore";
+import { useAddressStore } from "../store/useAddressStore";
 
 const PaymentPage = () => {
     const navigate = useNavigate();
