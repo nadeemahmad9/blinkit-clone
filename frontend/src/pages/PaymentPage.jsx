@@ -44,7 +44,7 @@ const PaymentPage = () => {
 
                 // 3. Redirect after success animation
                 setTimeout(() => {
-                    navigate("/profile"); // Or specific /order-success page
+                    navigate("/orders"); // Or specific /order-success page
                 }, 2000);
             } else {
                 alert(result.message || "Payment Failed. Please try again.");
