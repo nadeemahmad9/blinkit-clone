@@ -36,22 +36,48 @@ const Home = () => {
     const [snackProducts, setSnackProducts] = useState([]);
     const [BeveragesProducts, setBeveragesProducts] = useState([]);
 
+    // useEffect(() => {
+    //     const loadData = async () => {
+    //         try {
+    //             setLoading(true);
+
+    //             // 2. Fetch data in parallel
+    //             // fetchProducts() -> Gets all/random products for "Recommended"
+    //             // fetchProducts("Snacks") -> Gets only products with category "Snacks"
+    //             const [recommendedData, snacksData, BeveragesData] = await Promise.all([
+    //                 fetchProducts(),
+    //                 fetchProducts("Snacks")
+    //             ]);
+
+    //             setRecommendedProducts(recommendedData);
+    //             setSnackProducts(snacksData);
+    //             setBeveragesProducts(BeveragesData);
+    //         } catch (error) {
+    //             console.error("Failed to fetch products", error);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     }
+    //     loadData();
+    // }, [])
+
+
     useEffect(() => {
         const loadData = async () => {
             try {
                 setLoading(true);
 
-                // 2. Fetch data in parallel
-                // fetchProducts() -> Gets all/random products for "Recommended"
-                // fetchProducts("Snacks") -> Gets only products with category "Snacks"
+                // FIX: Add the 3rd fetch call for "Beverages"
                 const [recommendedData, snacksData, BeveragesData] = await Promise.all([
-                    fetchProducts(),
-                    fetchProducts("Snacks")
+                    fetchProducts(),           // 1. Recommended
+                    fetchProducts("Snacks"),   // 2. Snacks
+                    fetchProducts("Beverages") // 3. Beverages (This was missing!)
                 ]);
 
-                setRecommendedProducts(recommendedData);
-                setSnackProducts(snacksData);
-                setBeveragesProducts(BeveragesData);
+                // Fallback to [] if API returns nothing/null to prevent crashes
+                setRecommendedProducts(recommendedData || []);
+                setSnackProducts(snacksData || []);
+                setBeveragesProducts(BeveragesData || []);
             } catch (error) {
                 console.error("Failed to fetch products", error);
             } finally {
