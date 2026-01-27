@@ -14,11 +14,13 @@ import SearchPage from './pages/SearchPage'
 import AllProductsPage from './pages/AllProductsPage'
 import Footer from './components/layout/Footer'
 import ProductDetails from './pages/ProductDetails'
+import ScrollToTop from './components/common/ScrollToTop'
 
 function App() {
   return (
     <div className="antialiased text-gray-900">
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/orders" element={<Orders />} />

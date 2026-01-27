@@ -1139,7 +1139,13 @@ const Header = () => {
                     {/* Top Row: Logo + Mobile Actions */}
                     <div className="flex items-center justify-between w-full lg:w-auto">
                         {/* Logo */}
-                        <div onClick={() => navigate('/')} className="cursor-pointer shrink-0">
+                        <div
+                            onClick={() => {
+                                navigate('/');
+                                window.scrollTo({ top: 0, behavior: 'smooth' }); // Adds smooth scrolling
+                            }}
+                            className="cursor-pointer shrink-0"
+                        >
                             <h1 className="text-3xl font-extrabold tracking-tight text-[#f8cb46] drop-shadow-sm" style={{ textShadow: "1px 1px 0px #000" }}>
                                 blinkit
                             </h1>
