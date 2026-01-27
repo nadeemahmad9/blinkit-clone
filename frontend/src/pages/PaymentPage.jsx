@@ -119,7 +119,7 @@ const PaymentPage = () => {
                     <PaymentOption
                         id="gpay"
                         title="Google Pay"
-                        icon="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-logo-icon-download-in-svg-png-gif-file-formats--payment-checkout-transaction-brand-pack-logos-icons-2651061.png"
+                        icon="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png"
                         selected={selectedMethod}
                         onSelect={setSelectedMethod}
                     />
