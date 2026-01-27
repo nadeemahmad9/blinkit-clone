@@ -15,6 +15,7 @@ import AllProductsPage from './pages/AllProductsPage'
 import Footer from './components/layout/Footer'
 import ProductDetails from './pages/ProductDetails'
 import ScrollToTop from './components/common/ScrollToTop'
+import PaymentPage from './pages/PaymentPage'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path='/products' element={<AllProductsPage />} />
         <Route path='/products/:id' element={<ProductDetails />} />
+        <Route path='/payment' element={<PaymentPage />} />
       </Routes>
 
       {/* Global Drawers */}
