@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useCartStore } from "../store/useCartStore";
 import { useAuthStore } from "../store/useAuthStore";
-import { useAddressStore } from "../store/useAddressStore";
+import useAddressStore from "../store/useAddressStore";
 
 const PaymentPage = () => {
     const navigate = useNavigate();
