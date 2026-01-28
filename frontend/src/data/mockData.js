@@ -26,7 +26,7 @@ export const CATEGORY_DATA = {
       { 
         id: "milk",  // ✅ Matches Backend Category
         name: "Milk", 
-        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=225/layout-engine/2022-11/Slice-2_10.png" 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/922_1643384380004.png" 
       },
       { 
         id: "bread", // ✅ Matches Backend Category
