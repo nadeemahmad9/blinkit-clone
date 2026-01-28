@@ -13,6 +13,7 @@ const orderSchema = mongoose.Schema(
       },
     ],
     totalPrice: { type: Number, required: true },
+    paymentMethod: { type: String, required: true, default: "UPI" },
     status: { type: String, default: "Placed" }, // Placed, Shipped, Delivered
   },
   { timestamps: true }
