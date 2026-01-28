@@ -4,7 +4,7 @@ import Order from "../models/Order.js";
 //  POST /api/orders
 //  Private (User must be logged in)
 export const addOrderItems = async (req, res) => {
-  const { orderItems, totalPrice, userId } = req.body; // We will send userId from frontend
+  const { orderItems, totalPrice, userId, paymentMethod } = req.body; // We will send userId from frontend
 
   if (orderItems && orderItems.length === 0) {
     return res.status(400).json({ message: "No order items" });
@@ -13,6 +13,7 @@ export const addOrderItems = async (req, res) => {
       user: userId,
       orderItems,
       totalPrice,
+      paymentMethod: paymentMethod || "UPI", // Default to UPI if missing
     });
 
     const createdOrder = await order.save();
