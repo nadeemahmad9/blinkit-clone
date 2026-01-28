@@ -531,7 +531,7 @@ const CategoryPage = () => {
                             className={`cursor-pointer flex flex-col items-center gap-2 p-3 border-b border-gray-50 transition-colors relative ${activeSub === sub.id ? "bg-[#ecffec]" : "hover:bg-gray-50"}`}
                         >
                             {activeSub === sub.id && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#318616] rounded-r-md" />}
-                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center p-1 border pb-1 transition-all ${activeSub === sub.id ? "bg-white border-[#318616] scale-105" : "bg-gray-50 border-gray-100"}`}>
+                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center p-1 border mb-2 transition-all ${activeSub === sub.id ? "bg-white border-[#318616] scale-105" : "bg-gray-50 border-gray-100"}`}>
                                 <img src={sub.icon} alt={sub.name} className="w-full h-full object-cover" />
                             </div>
                             <span className={`text-[11px] text-center font-medium leading-tight ${activeSub === sub.id ? "text-[#318616] font-bold" : "text-gray-500"}`}>{sub.name}</span>
