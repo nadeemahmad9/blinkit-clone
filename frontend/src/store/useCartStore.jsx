@@ -291,7 +291,7 @@ export const useCartStore = create(
                 );
             },
 
-            placeOrder: async (userId) => {
+            placeOrder: async (userId, paymentMethod) => {
                 const { cartItems, getCartTotal } = get();
                 const totalPrice = getCartTotal();
 
@@ -308,6 +308,7 @@ export const useCartStore = create(
                         userId,
                         orderItems,
                         totalPrice,
+                        paymentMethod,
                     });
 
                     return { success: true, order: data };

@@ -36,7 +36,7 @@ const PaymentPage = () => {
         // 1. Simulate Payment Gateway Delay (2 seconds)
         setTimeout(async () => {
             // 2. Place Order in Backend
-            const result = await placeOrder(user?._id || user?.id);
+            const result = await placeOrder(user?._id || user?.id, selectedMethod);
 
             if (result.success) {
                 setSuccess(true);
