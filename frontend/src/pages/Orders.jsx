@@ -542,19 +542,29 @@ const Orders = () => {
         fetchOrders();
     }, [user, navigate]);
 
-    // 2. Helper to get dynamic Icon & Text
+    // Helper to get dynamic Icon & Text
     const getPaymentDisplay = (method) => {
         switch (method) {
             case "cod":
                 return { icon: <Banknote size={14} />, text: "Cash" };
             case "card":
                 return { icon: <CreditCard size={14} />, text: "Card" };
-            case "upi":
+
+            // ✅ SEPARATE GPay
             case "gpay":
+                return { icon: <Smartphone size={14} />, text: "Google Pay" };
+
+            // ✅ SEPARATE PhonePe
             case "phonepe":
+                return { icon: <Smartphone size={14} />, text: "PhonePe" };
+
+            // Generic UPI
+            case "upi":
                 return { icon: <Smartphone size={14} />, text: "UPI" };
+
             default:
-                return { icon: <Smartphone size={14} />, text: "UPI" }; // Default to UPI
+                // Fallback: If unknown, try to capitalize the method name
+                return { icon: <Smartphone size={14} />, text: method || "UPI" };
         }
     };
 
