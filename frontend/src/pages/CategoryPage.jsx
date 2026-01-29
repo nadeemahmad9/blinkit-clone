@@ -532,7 +532,7 @@ const CategoryPage = () => {
                         >
                             {activeSub === sub.id && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#318616] rounded-r-md" />}
                             <div className={`w-14 h-16 rounded-2xl flex items-center justify-center p-1 border transition-all ${activeSub === sub.id ? "bg-white border-[#318616] scale-105" : "bg-gray-50 border-gray-100"}`}>
-                                <img src={sub.icon} alt={sub.name} className="w-full h-full object-cover mt-1" />
+                                <img src={sub.icon} alt={sub.name} className="w-full h-full object-cover mt-2" />
                             </div>
                             <span className={`text-[11px] text-center font-medium leading-tight ${activeSub === sub.id ? "text-[#318616] font-bold" : "text-gray-500"}`}>{sub.name}</span>
                         </div>
