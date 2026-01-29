@@ -455,6 +455,110 @@
 // export default CategoryPage;
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+// import { ArrowLeft, Search, Loader } from "lucide-react";
+// import { CATEGORY_DATA } from "../data/mockData";
+// // ✅ Import the helper function instead of using axios directly
+// import { fetchProducts } from "../services/api";
+// import ProductCard from "../features/products/ProductCard";
+
+// const CategoryPage = () => {
+//     const { slug } = useParams();
+//     const navigate = useNavigate();
+
+//     const [activeSub, setActiveSub] = useState(null);
+//     const [products, setProducts] = useState([]);
+//     const [loading, setLoading] = useState(true);
+
+//     const currentCategory = CATEGORY_DATA[slug] || { name: slug, subCategories: [] };
+
+//     // 1. Set default sub-category
+//     useEffect(() => {
+//         if (currentCategory.subCategories.length > 0) {
+//             setActiveSub(currentCategory.subCategories[0].id);
+//         }
+//     }, [slug]);
+
+//     // 2. Fetch Products
+//     useEffect(() => {
+//         if (!activeSub) return;
+
+//         const loadProducts = async () => {
+//             setLoading(true);
+//             try {
+//                 // ✅ FIX: Use fetchProducts() which handles the Full URL automatically
+//                 // This sends "milk" -> backend receives "milk" -> returns products
+//                 const data = await fetchProducts(activeSub);
+
+//                 if (Array.isArray(data)) {
+//                     setProducts(data);
+//                 } else {
+//                     setProducts([]);
+//                 }
+//             } catch (error) {
+//                 console.error("Error loading products", error);
+//                 setProducts([]);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
+//         loadProducts();
+//     }, [activeSub]);
+
+//     return (
+//         <div className="bg-[#f4f6fb] h-screen flex flex-col font-sans overflow-hidden max-w-[1280px] mx-auto w-full shadow-xl">
+//             {/* ... (Keep your existing JSX Header & Layout) ... */}
+
+//             {/* Header */}
+//             <div className="bg-white z-20 border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3 flex-none">
+//                 <button onClick={() => navigate("/")} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
+//                     <ArrowLeft size={24} className="text-gray-700" />
+//                 </button>
+//                 <h1 className="text-lg font-extrabold text-brand-dark flex-1 capitalize">
+//                     {currentCategory.name}
+//                 </h1>
+//                 <Search size={20} className="text-brand-dark" />
+//             </div>
+
+//             <div className="flex flex-1 min-h-0 bg-white">
+//                 {/* Sidebar */}
+//                 <div className="w-24 md:w-32 bg-white border-r border-gray-200 overflow-y-auto flex-none pb-20 no-scrollbar">
+//                     {currentCategory.subCategories.map((sub) => (
+//                         <div
+//                             key={sub.id}
+//                             onClick={() => setActiveSub(sub.id)}
+//                             className={`cursor-pointer flex flex-col items-center gap-2 p-3 border-b border-gray-50 transition-colors relative ${activeSub === sub.id ? "bg-[#ecffec]" : "hover:bg-gray-50"}`}
+//                         >
+//                             {activeSub === sub.id && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#318616] rounded-r-md" />}
+//                             <div className={`w-14 h-18 rounded-2xl flex items-center justify-center p-1 border transition-all ${activeSub === sub.id ? "bg-white border-[#318616] scale-105" : "bg-gray-50 border-gray-100"}`}>
+//                                 <img src={sub.icon} alt={sub.name} className="w-full h-full object-cover mt-4" />
+//                             </div>
+//                             <span className={`text-[11px] text-center font-medium leading-tight ${activeSub === sub.id ? "text-[#318616] font-bold" : "text-gray-500"}`}>{sub.name}</span>
+//                         </div>
+//                     ))}
+//                 </div>
+
+//                 {/* Products Grid */}
+//                 <div className="flex-1 bg-[#F4F6FB] h-full overflow-y-auto p-3 pb-24">
+//                     {/* ... (Keep your product grid logic) ... */}
+//                     {loading ? (
+//                         <div className="flex justify-center h-40 items-center"><Loader className="animate-spin" /></div>
+//                     ) : (
+//                         // Using your ProductCard component here
+//                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+//                             {products.map(p => <ProductCard key={p._id} product={p} />)}
+//                         </div>
+//                     )}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default CategoryPage;
+
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, Loader } from "lucide-react";
@@ -488,7 +592,6 @@ const CategoryPage = () => {
             setLoading(true);
             try {
                 // ✅ FIX: Use fetchProducts() which handles the Full URL automatically
-                // This sends "milk" -> backend receives "milk" -> returns products
                 const data = await fetchProducts(activeSub);
 
                 if (Array.isArray(data)) {
@@ -508,7 +611,6 @@ const CategoryPage = () => {
 
     return (
         <div className="bg-[#f4f6fb] h-screen flex flex-col font-sans overflow-hidden max-w-[1280px] mx-auto w-full shadow-xl">
-            {/* ... (Keep your existing JSX Header & Layout) ... */}
 
             {/* Header */}
             <div className="bg-white z-20 border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3 flex-none">
@@ -521,33 +623,70 @@ const CategoryPage = () => {
                 <Search size={20} className="text-brand-dark" />
             </div>
 
+            {/* Main Content Area */}
             <div className="flex flex-1 min-h-0 bg-white">
-                {/* Sidebar */}
+
+                {/* --- Sidebar (Updated with Exact UI) --- */}
                 <div className="w-24 md:w-32 bg-white border-r border-gray-200 overflow-y-auto flex-none pb-20 no-scrollbar">
-                    {currentCategory.subCategories.map((sub) => (
-                        <div
-                            key={sub.id}
-                            onClick={() => setActiveSub(sub.id)}
-                            className={`cursor-pointer flex flex-col items-center gap-2 p-3 border-b border-gray-50 transition-colors relative ${activeSub === sub.id ? "bg-[#ecffec]" : "hover:bg-gray-50"}`}
-                        >
-                            {activeSub === sub.id && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#318616] rounded-r-md" />}
-                            <div className={`w-14 h-18 rounded-2xl flex items-center justify-center p-1 border transition-all ${activeSub === sub.id ? "bg-white border-[#318616] scale-105" : "bg-gray-50 border-gray-100"}`}>
-                                <img src={sub.icon} alt={sub.name} className="w-full h-full object-cover mt-4" />
+                    {currentCategory.subCategories.map((sub) => {
+                        const isSelected = activeSub === sub.id;
+                        return (
+                            <div
+                                key={sub.id}
+                                onClick={() => setActiveSub(sub.id)}
+                                className="cursor-pointer w-full py-3 relative flex flex-col items-center justify-center gap-1 group hover:bg-gray-50 transition-colors"
+                            >
+                                {/* Image Container with "Shelf" look */}
+                                <div className="relative h-12 w-12 overflow-hidden rounded-lg">
+                                    <div className="flex h-full items-center justify-center rounded-md bg-gray-100">
+                                        {/* Image pushed down by 18px */}
+                                        <div className="absolute h-16 w-10 bottom-[-18px] transition-all duration-300">
+                                            <div className="flex flex-col w-full h-full aspect-square overflow-hidden">
+                                                <img
+                                                    src={sub.icon}
+                                                    alt={sub.name}
+                                                    className="h-full w-full object-scale-down"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Text Label */}
+                                <div className="w-4/5 text-center break-words">
+                                    <span
+                                        className={`text-[11px] leading-tight block ${isSelected ? "font-bold text-gray-900" : "font-medium text-gray-500"
+                                            }`}
+                                    >
+                                        {sub.name}
+                                    </span>
+                                </div>
+
+                                {/* Active Indicator (Right Side) */}
+                                {isSelected && (
+                                    <div className="absolute right-0 top-0 bottom-0 w-1 rounded-l-lg bg-green-700" />
+                                )}
                             </div>
-                            <span className={`text-[11px] text-center font-medium leading-tight ${activeSub === sub.id ? "text-[#318616] font-bold" : "text-gray-500"}`}>{sub.name}</span>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
-                {/* Products Grid */}
+                {/* --- Products Grid --- */}
                 <div className="flex-1 bg-[#F4F6FB] h-full overflow-y-auto p-3 pb-24">
-                    {/* ... (Keep your product grid logic) ... */}
                     {loading ? (
-                        <div className="flex justify-center h-40 items-center"><Loader className="animate-spin" /></div>
+                        <div className="flex justify-center h-40 items-center">
+                            <Loader className="animate-spin text-gray-500" />
+                        </div>
                     ) : (
-                        // Using your ProductCard component here
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                            {products.map(p => <ProductCard key={p._id} product={p} />)}
+                            {products.map((p) => (
+                                <ProductCard key={p._id} product={p} />
+                            ))}
+                            {products.length === 0 && !loading && (
+                                <div className="col-span-full text-center text-gray-400 mt-10">
+                                    No products found in this category.
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
