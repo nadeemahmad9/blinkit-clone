@@ -11,6 +11,11 @@ const ProfileDrawer = () => {
     const navigate = useNavigate();
     const { user, isProfileOpen, closeProfile, logout } = useAuthStore();
 
+    const handleGoToProfile = () => {
+        closeProfile(); // Close the drawer
+        navigate("/profile"); // Go to the page
+    };
+
     const handleLogout = () => {
         logout();
         closeProfile();
@@ -21,6 +26,7 @@ const ProfileDrawer = () => {
         closeProfile();
         navigate(path);
     };
+
 
     if (!user) return null;
 
@@ -46,6 +52,24 @@ const ProfileDrawer = () => {
         <AnimatePresence>
             {isProfileOpen && (
                 <>
+                    <div className="p-4 border-b border-gray-100">
+                        <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold">
+                                {user?.name?.charAt(0)}
+                            </div>
+                            <div>
+                                <p className="font-bold">{user?.name}</p>
+
+                                {/* 👇 LINK TO PROFILE PAGE */}
+                                <button
+                                    onClick={handleGoToProfile}
+                                    className="text-xs text-[#0c831f] font-bold hover:underline"
+                                >
+                                    View & Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     {/* Dark Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
