@@ -1251,6 +1251,9 @@ const Header = () => {
                         onClick={handleProfileClick}
                         className="text-[18px] text-gray-800 font-normal hover:text-gray-900"
                     >
+
+                        <User size={24} className="text-gray-700" />
+
                         {user ? (user.name || "Profile") : "Login"}
                     </button>
 
