@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, User, Mail, Phone, LogOut, Edit2, Check, X, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/useAuthStore";
-import useCartStore from "../store/useCartStore";
+import { useCartStore } from "../store/useCartStore";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
