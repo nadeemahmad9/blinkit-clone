@@ -1252,7 +1252,7 @@ const Header = () => {
                         className="text-[18px] text-gray-800 font-normal hover:text-gray-900"
                     >
 
-                        <User size={24} className="text-gray-700" />
+                        <User size={24} className="text-gray-700 mx-2" />
 
                         {user ? (user.name || "Profile") : "Login"}
                     </button>
