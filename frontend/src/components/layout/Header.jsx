@@ -1068,6 +1068,13 @@ const Header = () => {
     }, []);
 
 
+
+
+    // --- Cart Data ---
+    const { cartItems, getCartTotal, openCart } = useCartStore();
+    const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = getCartTotal();
+
     const [isBumping, setIsBumping] = useState(false);
 
     useEffect(() => {
@@ -1076,11 +1083,6 @@ const Header = () => {
         const timer = setTimeout(() => setIsBumping(false), 300); // Reset after 300ms
         return () => clearTimeout(timer);
     }, [cartItems.length]);
-
-    // --- Cart Data ---
-    const { cartItems, getCartTotal, openCart } = useCartStore();
-    const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    const totalPrice = getCartTotal();
 
     // --- Auth Data ---
     const { user, openLogin, openProfile } = useAuthStore();
