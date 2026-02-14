@@ -288,7 +288,10 @@ const Home = () => {
             } catch (error) {
                 console.error("Failed to fetch products", error);
             } finally {
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+
+                }, 2000)
             }
         }
         loadData();
