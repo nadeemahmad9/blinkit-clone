@@ -17,25 +17,28 @@ import ProductDetails from './pages/ProductDetails'
 import ScrollToTop from './components/common/ScrollToTop'
 import PaymentPage from './pages/PaymentPage'
 import ProfilePage from './pages/ProfilePage'
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
   return (
     <div className="antialiased text-gray-900">
       <Header />
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/orders" element={<Orders />} />
+      <AnimatePresence mode='wait'>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/orders" element={<Orders />} />
 
-        {/* NEW ROUTE: The :slug part is dynamic (e.g., dairy, snacks) */}
-        <Route path="/category/:slug" element={<CategoryPage />} />
+          {/* NEW ROUTE: The :slug part is dynamic (e.g., dairy, snacks) */}
+          <Route path="/category/:slug" element={<CategoryPage />} />
 
-        <Route path="/search" element={<SearchPage />} />
-        <Route path='/products' element={<AllProductsPage />} />
-        <Route path='/products/:id' element={<ProductDetails />} />
-        <Route path='/payment' element={<PaymentPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Routes>
+          <Route path="/search" element={<SearchPage />} />
+          <Route path='/products' element={<AllProductsPage />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
+          <Route path='/payment' element={<PaymentPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </AnimatePresence>
 
       {/* Global Drawers */}
       <CartDrawer />

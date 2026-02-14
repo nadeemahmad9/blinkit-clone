@@ -475,7 +475,8 @@ const ProductCard = ({ product }) => {
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     className="absolute inset-0"
                                 >
-                                    <button
+                                    <motion.button
+                                        whileTap={{ scale: 0.90 }}
                                         onClick={(e) => {
                                             e.preventDefault(); // Stop navigation
                                             e.stopPropagation(); // Stop bubbling
@@ -484,7 +485,7 @@ const ProductCard = ({ product }) => {
                                         className="w-full h-full border border-[#318616] text-[#318616] bg-[#F7FFF9] hover:bg-[#318616] hover:text-white rounded-lg text-[12px] sm:text-[13px] font-bold uppercase transition-colors duration-200 flex items-center justify-center shadow-sm cursor-pointer"
                                     >
                                         ADD
-                                    </button>
+                                    </motion.button>
                                 </motion.div>
                             ) : (
                                 <motion.div

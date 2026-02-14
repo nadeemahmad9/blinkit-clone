@@ -1057,6 +1057,15 @@ const Header = () => {
     const placeholders = ['Search "milk"', 'Search "bread"', 'Search "sugar"', 'Search "butter"', 'Search "paneer"', 'Search "chips"'];
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
+    const [isBumping, setIsBumping] = useState(false);
+
+    useEffect(() => {
+        if (cartItems.length === 0) return;
+        setIsBumping(true);
+        const timer = setTimeout(() => setIsBumping(false), 300); // Reset after 300ms
+        return () => clearTimeout(timer);
+    }, [cartItems.length]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
@@ -1156,14 +1165,17 @@ const Header = () => {
                             <button onClick={handleProfileClick}>
                                 <User size={24} className="text-gray-700" />
                             </button>
-                            <button onClick={openCart} className="relative">
+                            <motion.button
+                                animate={isBumping ? { scale: 1.2 } : { scale: 1 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                                onClick={openCart} className="relative">
                                 <ShoppingBag size={24} className="text-gray-700" />
                                 {totalItems > 0 && (
                                     <span className="absolute -top-1 -right-1 bg-[#0c831f] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                                         {totalItems}
                                     </span>
                                 )}
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
 

@@ -7,6 +7,7 @@ import { fetchProducts } from "../services/api";
 import { Loader } from "lucide-react";
 import { Link } from "react-router-dom";
 import PromoBanner from "../features/home/PromoBanner";
+import PageTransition from "../components/common/PageTransition";
 
 const CATEGORIES = [
     { id: 1, name: "Dairy", image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=225/layout-engine/2022-11/Slice-2_10.png" },
@@ -88,143 +89,145 @@ const Home = () => {
     }, [])
 
     return (
+        <PageTransition>
         // Added max-w and mx-auto to center content on large screens
-        <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
+            <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
 
-            {/* Hero Banner Area */}
+                {/* Hero Banner Area */}
 
-            {/* Hero Banner Area */}
-            <div className="p-4">
-                {/* Wrap everything in a Link to make it clickable */}
-                <Link to="/products" className="w-[1265px] h-[269px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform duration-200">
-                    <img
-                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
-                        alt="Hero Banner"
-                        className="w-full h-auto object-contain block"
-                        loading="lazy"
-                    />
-                </Link>
-            </div>
+                {/* Hero Banner Area */}
+                <div className="p-4">
+                    {/* Wrap everything in a Link to make it clickable */}
+                    <Link to="/products" className="w-[1265px] h-[269px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform duration-200">
+                        <img
+                            src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
+                            alt="Hero Banner"
+                            className="w-full h-auto object-contain block"
+                            loading="lazy"
+                        />
+                    </Link>
+                </div>
 
-            <PromoBanner />
+                <PromoBanner />
 
-            {/* Category Section */}
-            <div className="px-4 mb-8 mt-4">
-                <h2 className="text-lg font-extrabold text-brand-dark mb-4">Shop by Category</h2>
+                {/* Category Section */}
+                <div className="px-4 mb-8 mt-4">
+                    <h2 className="text-lg font-extrabold text-brand-dark mb-4">Shop by Category</h2>
 
-                {/* RESPONSIVE GRID FIX:
+                    {/* RESPONSIVE GRID FIX:
                    - grid-cols-3: Mobile (3 items per row)
                    - sm:grid-cols-4: Large Mobile/Small Tablet (4 items)
                    - md:grid-cols-6: Tablet (6 items)
                    - lg:grid-cols-9: Desktop (9 items - matches your original intent)
                    - justify-items-center: Centers the images in their grid cells
                 */}
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-y-6 gap-x-2 justify-items-center">
-                    {CATEGORIES.map((cat) => (
-                        <Link
-                            to={`/category/${cat.name.toLowerCase()}`}
-                            key={cat.id}
-                            className="flex flex-col items-center gap-2 group cursor-pointer w-full"
-                        >
-                            {/* Removed fixed width w-[115px] to allow it to fit the grid column, added max-width for sanity */}
-                            <div className="w-full max-w-[115px] aspect-[115/169] overflow-hidden transition-transform hover:scale-105 duration-200">
-                                <img
-                                    src={cat.image}
-                                    alt={cat.name}
-                                    className="w-full h-full object-fill"
-                                    loading="lazy"
-                                />
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
-
-            {/* Product Grid - "Recommended" */}
-            {/* SECTION 1: Recommended */}
-            <div className="px-4 mb-8">
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-extrabold text-brand-dark">Recommended</h2>
-                    <Link to="/products" className="text-xs font-bold text-brand-green hover:text-green-700">
-                        See all
-                    </Link>
-                </div>
-
-                {loading ? (
-                    <div className="flex justify-center items-center h-40">
-                        <Loader className="animate-spin text-brand-green" size={32} />
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        {/* Map the Recommended State */}
-                        {recommendedProducts.slice(0, 6).map((prod) => (
-                            <ProductCard key={prod._id} product={prod} />
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-y-6 gap-x-2 justify-items-center">
+                        {CATEGORIES.map((cat) => (
+                            <Link
+                                to={`/category/${cat.name.toLowerCase()}`}
+                                key={cat.id}
+                                className="flex flex-col items-center gap-2 group cursor-pointer w-full"
+                            >
+                                {/* Removed fixed width w-[115px] to allow it to fit the grid column, added max-width for sanity */}
+                                <div className="w-full max-w-[115px] aspect-[115/169] overflow-hidden transition-transform hover:scale-105 duration-200">
+                                    <img
+                                        src={cat.image}
+                                        alt={cat.name}
+                                        className="w-full h-full object-fill"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </Link>
                         ))}
                     </div>
-                )}
-            </div>
-
-            {/* SECTION 2: Snacks & Munchies (Fetched from Backend) */}
-            <div className="px-4 mb-8">
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-extrabold text-brand-dark">Snacks & Munchies</h2>
-                    <Link to="/category/snacks" className="text-xs font-bold text-brand-green hover:text-green-700">
-                        See all
-                    </Link>
                 </div>
 
-                {loading ? (
-                    <div className="flex justify-center items-center h-40">
-                        <Loader className="animate-spin text-brand-green" size={32} />
+                {/* Product Grid - "Recommended" */}
+                {/* SECTION 1: Recommended */}
+                <div className="px-4 mb-8">
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-lg font-extrabold text-brand-dark">Recommended</h2>
+                        <Link to="/products" className="text-xs font-bold text-brand-green hover:text-green-700">
+                            See all
+                        </Link>
                     </div>
-                ) : (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        {/* Map the Snacks State */}
-                        {snackProducts.length > 0 ? (
-                            snackProducts.slice(0, 6).map((prod) => (
+
+                    {loading ? (
+                        <div className="flex justify-center items-center h-40">
+                            <Loader className="animate-spin text-brand-green" size={32} />
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                            {/* Map the Recommended State */}
+                            {recommendedProducts.slice(0, 6).map((prod) => (
                                 <ProductCard key={prod._id} product={prod} />
-                            ))
-                        ) : (
-                            <p className="text-sm text-gray-400 col-span-full text-center py-4">
-                                No snacks found.
-                            </p>
-                        )}
-                    </div>
-                )}
-            </div>
-
-            {/* Cold Drinks & Juices */}
-
-            <div className="px-4 mb-8">
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-extrabold text-brand-dark">Cold Drinks & Juices</h2>
-                    <Link to="/category/Beverages" className="text-xs font-bold text-brand-green hover:text-green-700">
-                        See all
-                    </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
-                {loading ? (
-                    <div className="flex justify-center items-center h-40">
-                        <Loader className="animate-spin text-brand-green" size={32} />
+                {/* SECTION 2: Snacks & Munchies (Fetched from Backend) */}
+                <div className="px-4 mb-8">
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-lg font-extrabold text-brand-dark">Snacks & Munchies</h2>
+                        <Link to="/category/snacks" className="text-xs font-bold text-brand-green hover:text-green-700">
+                            See all
+                        </Link>
                     </div>
-                ) : (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        {/* Map the Snacks State */}
-                        {BeveragesProducts.length > 0 ? (
-                            BeveragesProducts.slice(0, 6).map((prod) => (
-                                <ProductCard key={prod._id} product={prod} />
-                            ))
-                        ) : (
-                            <p className="text-sm text-gray-400 col-span-full text-center py-4">
-                                No snacks found.
-                            </p>
-                        )}
-                    </div>
-                )}
-            </div>
 
-            {/* <BottomNav /> */}
-        </div>
+                    {loading ? (
+                        <div className="flex justify-center items-center h-40">
+                            <Loader className="animate-spin text-brand-green" size={32} />
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                            {/* Map the Snacks State */}
+                            {snackProducts.length > 0 ? (
+                                snackProducts.slice(0, 6).map((prod) => (
+                                    <ProductCard key={prod._id} product={prod} />
+                                ))
+                            ) : (
+                                <p className="text-sm text-gray-400 col-span-full text-center py-4">
+                                    No snacks found.
+                                </p>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                {/* Cold Drinks & Juices */}
+
+                <div className="px-4 mb-8">
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-lg font-extrabold text-brand-dark">Cold Drinks & Juices</h2>
+                        <Link to="/category/Beverages" className="text-xs font-bold text-brand-green hover:text-green-700">
+                            See all
+                        </Link>
+                    </div>
+
+                    {loading ? (
+                        <div className="flex justify-center items-center h-40">
+                            <Loader className="animate-spin text-brand-green" size={32} />
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                            {/* Map the Snacks State */}
+                            {BeveragesProducts.length > 0 ? (
+                                BeveragesProducts.slice(0, 6).map((prod) => (
+                                    <ProductCard key={prod._id} product={prod} />
+                                ))
+                            ) : (
+                                <p className="text-sm text-gray-400 col-span-full text-center py-4">
+                                    No snacks found.
+                                </p>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                {/* <BottomNav /> */}
+            </div>
+        </PageTransition>
     );
 };
 
