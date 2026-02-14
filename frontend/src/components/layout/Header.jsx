@@ -1057,6 +1057,17 @@ const Header = () => {
     const placeholders = ['Search "milk"', 'Search "bread"', 'Search "sugar"', 'Search "butter"', 'Search "paneer"', 'Search "chips"'];
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
+
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+
     const [isBumping, setIsBumping] = useState(false);
 
     useEffect(() => {
@@ -1065,13 +1076,6 @@ const Header = () => {
         const timer = setTimeout(() => setIsBumping(false), 300); // Reset after 300ms
         return () => clearTimeout(timer);
     }, [cartItems.length]);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
 
     // --- Cart Data ---
     const { cartItems, getCartTotal, openCart } = useCartStore();
