@@ -37,3 +37,41 @@ export const getMyOrders = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+// @desc    Get ALL orders for Admin panel
+// @route   GET /api/orders/all
+export const getAllOrders = async (req, res) => {
+  try {
+    // We use .populate() to grab the customer's details from the User collection
+    // so the admin panel can show their name, email, and phone number!
+    const orders = await Order.find({})
+      .populate("user", "name email phone")
+      .sort({ createdAt: -1 }); // Newest orders at the top
+
+    res.json(orders);
+  } catch (error) {
+    console.error("Error fetching all orders:", error);
+    res.status(500).json({ message: "Server Error fetching all orders" });
+  }
+};
+
+
+// @desc    Update order status (Pending -> Processing -> Delivered)
+// @route   PUT /api/orders/:id/status
+export const updateOrderStatus = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (order) {
+      order.status = req.body.status || order.status;
+      
+      const updatedOrder = await order.save();
+      res.json(updatedOrder);
+    } else {
+      res.status(404).json({ message: "Order not found" });
+    }
+  } catch (error) {
+    console.error("Error updating order status:", error);
+    res.status(500).json({ message: "Server Error updating order status" });
+  }
+};
