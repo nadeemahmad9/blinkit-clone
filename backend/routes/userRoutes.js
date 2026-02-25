@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post("/address", addAddress)
 router.get("/address/:userId", getAddresses)
-router.get("/users", getAllUsers)
+router.get("/", getAllUsers)
 
 export default router;
