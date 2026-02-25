@@ -34,3 +34,12 @@ export const getAddresses = async (req, res) => {
   }
 };
 
+// Add this to your user controller and route it
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({}).select("-password"); // Don't send passwords!
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching users" });
+    }
+};
