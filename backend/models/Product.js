@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const productSchema = mongoose.Schema({
-name: { type: String, required: true },
+    name: { type: String, required: true },
     image: { type: String, required: true },
     price: { type: Number, required: true },
     originalPrice: { type: Number, required: true },
@@ -9,11 +9,13 @@ name: { type: String, required: true },
     weight: { type: String, required: true },
     time: { type: Number, required: true }, // Delivery time in mins
     category: { type: String, required: true },
-    subCategory: { type: String},
+    subCategory: { type: String },
+    
+    // ✅ ADD THIS LINE RIGHT HERE:
+    stock: { type: Number, default: 0, required: true },
 
-    },
-  {
-    timestamps: true, // Adds createdAt and updatedAt automatically
+  }, {
+    timestamps: true, 
   }
 );
 
