@@ -85,5 +85,30 @@ export const CATEGORY_DATA = {
         icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/955_1643385414974.png" 
       }
     ]
+  },
+
+  // 4. SWEET TOOTH SECTION
+  // URL: /category/sweet%20tooth (or sweet-tooth)
+  "sweet tooth": {
+    name: "Sweet Tooth",
+    subCategories: [
+      { 
+        id: "ice-cream", // Make sure you type this in the Admin Panel "Sub Category" field!
+        name: "Ice Creams", 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/1423_1643445582298.png" 
+      },
+      { 
+        id: "chocolates", 
+        name: "Chocolates", 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/14_1644485579997.png" 
+      },
+      { 
+        id: "indian-sweets", 
+        name: "Indian Sweets", 
+        icon: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=180/app/images/category/cms_images/icon/1006_1657600888257.png" 
+      }
+    ]
   }
 };
+
+
