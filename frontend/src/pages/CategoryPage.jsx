@@ -559,11 +559,150 @@
 // export default CategoryPage;
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+// import { ArrowLeft, Search, Loader } from "lucide-react";
+// import { CATEGORY_DATA } from "../data/mockData";
+// // ✅ Import the helper function instead of using axios directly
+// import { fetchProducts } from "../services/api";
+// import ProductCard from "../features/products/ProductCard";
+
+// const CategoryPage = () => {
+//     const { slug } = useParams();
+//     const navigate = useNavigate();
+
+//     const [activeSub, setActiveSub] = useState(null);
+//     const [products, setProducts] = useState([]);
+//     const [loading, setLoading] = useState(true);
+
+//     const currentCategory = CATEGORY_DATA[slug] || { name: slug, subCategories: [] };
+
+//     // 1. Set default sub-category
+//     useEffect(() => {
+//         if (currentCategory.subCategories.length > 0) {
+//             setActiveSub(currentCategory.subCategories[0].id);
+//         }
+//     }, [slug]);
+
+//     // 2. Fetch Products
+//     useEffect(() => {
+//         if (!activeSub) return;
+
+//         const loadProducts = async () => {
+//             setLoading(true);
+//             try {
+//                 // ✅ FIX: Use fetchProducts() which handles the Full URL automatically
+//                 const data = await fetchProducts(activeSub);
+
+//                 if (Array.isArray(data)) {
+//                     setProducts(data);
+//                 } else {
+//                     setProducts([]);
+//                 }
+//             } catch (error) {
+//                 console.error("Error loading products", error);
+//                 setProducts([]);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
+//         loadProducts();
+//     }, [activeSub]);
+
+//     return (
+//         <div className="bg-[#f4f6fb] h-screen flex flex-col font-sans overflow-hidden max-w-[1280px] mx-auto w-full shadow-xl">
+
+//             {/* Header */}
+//             <div className="bg-white z-20 border-b border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3 flex-none">
+//                 <button onClick={() => navigate("/")} className="p-2 -ml-2 hover:bg-gray-100 rounded-full">
+//                     <ArrowLeft size={24} className="text-gray-700" />
+//                 </button>
+//                 <h1 className="text-lg font-extrabold text-brand-dark flex-1 capitalize">
+//                     {currentCategory.name}
+//                 </h1>
+//                 <Search size={20} className="text-brand-dark" />
+//             </div>
+
+//             {/* Main Content Area */}
+//             <div className="flex flex-1 min-h-0 bg-white">
+
+//                 {/* --- Sidebar (Updated with Exact UI) --- */}
+//                 <div className="w-24 md:w-32 bg-white border-r border-gray-200 overflow-y-auto flex-none pb-20 no-scrollbar">
+//                     {currentCategory.subCategories.map((sub) => {
+//                         const isSelected = activeSub === sub.id;
+//                         return (
+//                             <div
+//                                 key={sub.id}
+//                                 onClick={() => setActiveSub(sub.id)}
+//                                 className="cursor-pointer w-full py-3 relative flex flex-col items-center justify-center gap-1 group hover:bg-gray-50 transition-colors"
+//                             >
+//                                 {/* Image Container with "Shelf" look */}
+//                                 <div className="relative h-12 w-12 overflow-hidden rounded-lg">
+//                                     <div className="flex h-full items-center justify-center rounded-md bg-gray-100">
+//                                         {/* Image pushed down by 18px */}
+//                                         <div className="absolute h-16 w-10 bottom-[-18px] transition-all duration-300">
+//                                             <div className="flex flex-col w-full h-full aspect-square overflow-hidden">
+//                                                 <img
+//                                                     src={sub.icon}
+//                                                     alt={sub.name}
+//                                                     className="h-full w-full object-scale-down"
+//                                                 />
+//                                             </div>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+
+//                                 {/* Text Label */}
+//                                 <div className="w-4/5 text-center break-words">
+//                                     <span
+//                                         className={`text-[11px] leading-tight block ${isSelected ? "font-bold text-gray-900" : "font-medium text-gray-500"
+//                                             }`}
+//                                     >
+//                                         {sub.name}
+//                                     </span>
+//                                 </div>
+
+//                                 {/* Active Indicator (Right Side) */}
+//                                 {isSelected && (
+//                                     <div className="absolute right-0 top-0 bottom-0 w-1 rounded-l-lg bg-green-700" />
+//                                 )}
+//                             </div>
+//                         );
+//                     })}
+//                 </div>
+
+//                 {/* --- Products Grid --- */}
+//                 <div className="flex-1 bg-[#F4F6FB] h-full overflow-y-auto p-3 pb-24">
+//                     {loading ? (
+//                         <div className="flex justify-center h-40 items-center">
+//                             <Loader className="animate-spin text-gray-500" />
+//                         </div>
+//                     ) : (
+//                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+//                             {products.map((p) => (
+//                                 <ProductCard key={p._id} product={p} />
+//                             ))}
+//                             {products.length === 0 && !loading && (
+//                                 <div className="col-span-full text-center text-gray-400 mt-10">
+//                                     No products found in this category.
+//                                 </div>
+//                             )}
+//                         </div>
+//                     )}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default CategoryPage;
+
+
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, Loader } from "lucide-react";
 import { CATEGORY_DATA } from "../data/mockData";
-// ✅ Import the helper function instead of using axios directly
 import { fetchProducts } from "../services/api";
 import ProductCard from "../features/products/ProductCard";
 
@@ -575,23 +714,39 @@ const CategoryPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const currentCategory = CATEGORY_DATA[slug] || { name: slug, subCategories: [] };
+    // ✅ 1. ULTIMATE URL FIX: Decode the URL and convert hyphens to spaces
+    // e.g., "sweet%20tooth" OR "sweet-tooth" -> "sweet tooth"
+    const cleanSlug = decodeURIComponent(slug || "").replace(/-/g, " ");
 
-    // 1. Set default sub-category
+    // ✅ 2. Find the exact matching category from mockData, ignoring case
+    const matchingKey = Object.keys(CATEGORY_DATA).find(
+        (key) => key.toLowerCase() === cleanSlug.toLowerCase()
+    );
+
+    // ✅ 3. Safely load the category (Fallback to cleanSlug if not found in mock data)
+    const currentCategory = matchingKey
+        ? CATEGORY_DATA[matchingKey]
+        : { name: cleanSlug, subCategories: [] };
+
+    // ✅ 4. Set default sub-category
     useEffect(() => {
-        if (currentCategory.subCategories.length > 0) {
+        // If the category has subcategories, select the first one by default
+        if (currentCategory.subCategories && currentCategory.subCategories.length > 0) {
             setActiveSub(currentCategory.subCategories[0].id);
+        } else {
+            // Fallback: If no subcategories exist, search for the main category name
+            setActiveSub(matchingKey || cleanSlug);
         }
-    }, [slug]);
+    }, [matchingKey, cleanSlug, currentCategory.subCategories]);
 
-    // 2. Fetch Products
+    // ✅ 5. Fetch Products
     useEffect(() => {
         if (!activeSub) return;
 
         const loadProducts = async () => {
             setLoading(true);
             try {
-                // ✅ FIX: Use fetchProducts() which handles the Full URL automatically
+                // fetchProducts now safely receives the perfect string (e.g., "Ice Cream" or "Sweet Tooth")
                 const data = await fetchProducts(activeSub);
 
                 if (Array.isArray(data)) {
@@ -626,7 +781,7 @@ const CategoryPage = () => {
             {/* Main Content Area */}
             <div className="flex flex-1 min-h-0 bg-white">
 
-                {/* --- Sidebar (Updated with Exact UI) --- */}
+                {/* --- Sidebar --- */}
                 <div className="w-24 md:w-32 bg-white border-r border-gray-200 overflow-y-auto flex-none pb-20 no-scrollbar">
                     {currentCategory.subCategories.map((sub) => {
                         const isSelected = activeSub === sub.id;
@@ -639,7 +794,6 @@ const CategoryPage = () => {
                                 {/* Image Container with "Shelf" look */}
                                 <div className="relative h-12 w-12 overflow-hidden rounded-lg">
                                     <div className="flex h-full items-center justify-center rounded-md bg-gray-100">
-                                        {/* Image pushed down by 18px */}
                                         <div className="absolute h-16 w-10 bottom-[-18px] transition-all duration-300">
                                             <div className="flex flex-col w-full h-full aspect-square overflow-hidden">
                                                 <img
