@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT
 
 app.use(cors({
-    origin: ["https://grocio.netlify.app", "http://localhost:5173"], // Allow both Netlify and Localhost
+    origin: ["https://grocio.netlify.app/", "http://localhost:5173"], // Allow both Netlify and Localhost
 }));
 
 
