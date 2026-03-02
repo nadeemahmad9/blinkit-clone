@@ -89,7 +89,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="w-full md:w-auto text-center md:text-left">
-                    © Grocio Commerce Private Limited, 2016-2026
+                    © Grocio Commerce Private Limited
                 </div>
 
                 {/* Download App */}
