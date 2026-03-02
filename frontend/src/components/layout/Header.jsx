@@ -1161,8 +1161,8 @@ const Header = () => {
                             }}
                             className="cursor-pointer shrink-0"
                         >
-                            <h1 className="text-3xl font-extrabold tracking-tight text-[#05a256] drop-shadow-sm" style={{ textShadow: "1px 1px 0px #000" }}>
-                                grocio
+                            <h1 className="text-3xl font-extrabold tracking-tight text-[#04a356] drop-shadow-sm" style={{ textShadow: "1px 1px 0px #000" }}>
+                                grocio.
                             </h1>
                         </div>
 
