@@ -336,7 +336,9 @@ const Home = () => {
                     </Link>
                 </div>
 
-                <PromoBanner />
+                <div>
+                    <PromoBanner />
+                </div>
 
                 {/* Category Section */}
                 <div className="px-4 mb-8 mt-4">
