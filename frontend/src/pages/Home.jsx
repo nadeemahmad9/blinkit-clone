@@ -336,7 +336,7 @@ const Home = () => {
                     </Link>
                 </div>
 
-                <div className="mt-2">
+                <div className="mt-5">
                     <PromoBanner />
                 </div>
 
