@@ -312,8 +312,21 @@ const Home = () => {
             <div className="min-h-screen pb-24 font-sans max-w-[1280px] mx-auto bg-white">
 
                 {/* Hero Banner Area */}
-                <div className="p-4">
+                {/* <div className="p-4">
                     <Link to="/products" className="w-[1265px] h-[269px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform duration-200">
+                        <img
+                            src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
+                            alt="Hero Banner"
+                            className="w-full h-auto object-contain block"
+                            loading="lazy"
+                        />
+                    </Link>
+                </div> */}
+
+
+                {/* Hero Banner Area - Hidden on mobile, visible on tablet/desktop */}
+                <div className="hidden md:block p-4">
+                    <Link to="/products" className="block w-full max-w-[1265px] rounded-2xl overflow-hidden relative shadow-sm cursor-pointer transition-transform duration-200 mx-auto">
                         <img
                             src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg"
                             alt="Hero Banner"
