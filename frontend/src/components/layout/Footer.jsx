@@ -89,7 +89,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="w-full md:w-auto text-center md:text-left">
-                    © Boltit Commerce Private Limited, 2016-2026
+                    © Grocio Commerce Private Limited, 2016-2026
                 </div>
 
                 {/* Download App */}
